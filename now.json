@@ -1,16 +1,9 @@
 {
-  "version": 1,
-  "type": "docker",
-  "features": {
-    "cloud": "v1"
-  },
-  "env": [
-    "SECRET",
-    "WHITELIST",
-    "DEFAULT_IMAGE_URL",
-    "S3_ACCESS_KEY_ID",
-    "S3_SECRET_ACCESS_KEY",
-    "S3_BUCKET",
-    "S3_PREFIX"
-  ]
+  "version": 2,
+  "builds": [{
+    "src": "server.js",
+    "use": "@now/node",
+    "config": { "maxLambdaSize": "10mb"}
+  }],
+  "routes": [{"src": "/(.*)", "dest": "server.js"}]
 }
